@@ -77,7 +77,18 @@ async def on_message(message):
                 with open('message.txt', 'w') as f:
                     f.write(out)
                 await message.channel.send(file=discord.File('message.txt'))
+            elif len(out) == 0:
+                await message.channel.send('No output!')
             else:
                 await message.channel.send(out)
+        
+        if message.content.startswith('$download'):
+            msg = message.content.split()
+            filepath = ''.join((msg[1:]))
+            await message.channel.send(file=discord.File(filepath))
+
+        if message.content.startswith('$load'):
+            for attachment in message.attachments:
+                await attachment.save(attachment.filename)
 
 client.run(settings.token)
