@@ -6,3 +6,6 @@ exe:
 
 exe-console:
 	wine pyinstaller --icon=resources/icon/exe-icon.ico --onefile sayori/main.py
+
+run:
+	python sayori/main.py
