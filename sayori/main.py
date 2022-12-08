@@ -21,11 +21,11 @@ async def on_ready():
     ip = get('https://api.ipify.org').content.decode('utf8')
     channel = client.get_channel(settings.channel)
     await channel.send('**Connected!**\n```' +
-                       os.getlogin() + ' | ' + platform.node() + '\n' +
-                       'platform: ' + platform.platform() + '\n' +
-                       'MAC: ' + str(getnode()) + '\n' +
-                       'IP: ' + ip + '\n' +
-                       '```'
+        os.getlogin() + ' | ' + platform.node() + '\n' +
+        'platform: ' + platform.platform() + '\n' +
+        'MAC: ' + str(getnode()) + '\n' +
+        'IP: ' + ip + '\n' +
+        '```'
     )
 
 @client.event
