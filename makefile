@@ -12,3 +12,6 @@ exe-run:
 
 run:
 	python sayori/main.py
+
+clean:
+	rm dist/*
