@@ -70,7 +70,7 @@ async def on_message(message):
                     f.write(out)
                 await message.channel.send(info, file=discord.File('message.txt'))
             elif len(out) == 0:
-                await message.channel.send(info + '\nNo output!')
+                await message.channel.send(info + 'No output!')
             else:
                 await message.channel.send(info + out)
 
