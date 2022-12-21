@@ -10,6 +10,9 @@ exe-console:
 exe-run:
 	wine dist/main.exe
 
+installer:
+	wine pyinstaller --icon=resources/icon/exe-icon.ico --hidden-import=requests --onefile --noconsole tools/installer/main.py -n installer
+
 run:
 	python sayori/main.py
 

