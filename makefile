@@ -17,4 +17,5 @@ run:
 	python sayori/main.py
 
 clean:
-	rm dist/*
+	rm -r dist build
+	rm *.spec
