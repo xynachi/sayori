@@ -36,3 +36,5 @@ make exe-console
 # Installer for Windows
 make installer
 ```
+
+#### If you want to help fork and read [TODO.md](TODO.md)
