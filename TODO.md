@@ -7,6 +7,7 @@ Discord bot for remote PC control
 ### Fix
 - [ ] Broken Russian language
 - [ ] Broken host to get ip
+- [ ] Makefile for Windows
 
 ### Modules
 - [x] Automated installer
